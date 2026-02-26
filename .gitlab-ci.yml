@@ -1,0 +1,65 @@
+stages:
+  - install
+  - smoke
+  - critical
+
+variables:
+  PLAYWRIGHT_JUNIT_OUTPUT_NAME: test-results/junit.xml
+  CI: 'true'
+
+# 安裝依賴舞台
+install:dependencies:
+  stage: install
+  image: mcr.microsoft.com/playwright:v1.58.2-jammy
+  script:
+    - cd e2e
+    - npm install
+    - npx playwright install
+  artifacts:
+    paths:
+      - e2e/node_modules/
+      - e2e/.cache/
+  cache:
+    paths:
+      - e2e/node_modules/
+      - e2e/.cache/
+
+# Smoke Tests
+smoke:tests:
+  stage: smoke
+  image: mcr.microsoft.com/playwright:v1.58.2-jammy
+  needs: ['install:dependencies']
+  dependencies:
+    - install:dependencies
+  script:
+    - cd e2e
+    - npm test -- tests/smoke
+  artifacts:
+    when: always
+    paths:
+      - e2e/playwright-report/
+      - e2e/test-results/
+    reports:
+      junit: e2e/test-results/junit.xml
+  allow_failure: false
+  retry: 1
+
+# Critical Tests
+critical:tests:
+  stage: critical
+  image: mcr.microsoft.com/playwright:v1.58.2-jammy
+  needs: ['install:dependencies']
+  dependencies:
+    - install:dependencies
+  script:
+    - cd e2e
+    - npm test -- tests/critical
+  artifacts:
+    when: always
+    paths:
+      - e2e/playwright-report/
+      - e2e/test-results/
+    reports:
+      junit: e2e/test-results/junit.xml
+  allow_failure: true
+  retry: 2
