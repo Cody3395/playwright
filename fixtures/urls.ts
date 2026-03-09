@@ -7,6 +7,7 @@ export const URLS = {
   
   // 重要路徑
   HOME: '/',
+  HOME_TW: '/tw',
   SEARCH: '/search',
   PRODUCTS: '/products',
   

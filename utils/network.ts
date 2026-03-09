@@ -2,7 +2,7 @@
  * 網路監測和 API 相關工具
  */
 
-import { Page, BrowserContext } from '@playwright/test';
+import { Page, Response } from '@playwright/test';
 
 /**
  * 監聽 API 請求

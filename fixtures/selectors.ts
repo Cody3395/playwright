@@ -22,6 +22,7 @@ export const SELECTORS = {
   // 導航
   NAVIGATION_MENU: 'nav',
   MENU_ITEM: '[data-testid="menu-item"]',
+  MENU_PROMOTION_AREA: '.menu-promotion-area',
   
   // 搜尋結果
   SEARCH_RESULTS: '[data-testid="search-results"]',
