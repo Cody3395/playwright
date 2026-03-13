@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 /**
- * Critical Tests - 支援相關路徑
+ * @description Critical Tests - 支援相關路徑
  */
 
 test.describe('Support Journey - Critical Path', () => {

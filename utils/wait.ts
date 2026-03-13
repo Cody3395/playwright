@@ -5,7 +5,7 @@
  * 優先使用 Playwright 內建的自動等待機制。
  */
 
-import { Page, Locator } from '@playwright/test';
+import { Page } from '@playwright/test';
 
 /**
  * 等待特定元素可見

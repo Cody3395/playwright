@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
-import { URLS } from '../../fixtures/urls';
-import { SELECTORS } from '../../fixtures/selectors';
+import { URLS } from '@fixtures/urls';
+import { SELECTORS } from '@fixtures/selectors';
 
 /**
  * Navigation Smoke Tests
@@ -18,7 +18,7 @@ test.describe('Gigabyte Navigation - Smoke Tests', () => {
   });
 
   test('TW local site should show promotion menu area in header', async ({ page }) => {
-    await page.goto(URLS.HOME);
+    await page.goto(URLS.homePath('tw'));
 
     await expect(page.locator(SELECTORS.HEADER)).toBeVisible();
 

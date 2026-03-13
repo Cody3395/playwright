@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { GigabytePage } from '../pages/GigabytePage';
+import { Header } from '../pages';
 
 test('has title', async ({ page }) => {
   await page.goto('/');
@@ -17,7 +17,7 @@ test('page loads successfully', async ({ page }) => {
 });
 
 test('search product on homepage', async ({ page }) => {
-  const gigabytePage = new GigabytePage(page);
+  const gigabytePage = new Header(page);
   
   await gigabytePage.goto();
   await gigabytePage.clickSearchButton();

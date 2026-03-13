@@ -1,6 +1,6 @@
 import { Page } from '@playwright/test';
 
-export class GigabytePage {
+export class Header {
   readonly page: Page;
 
   constructor(page: Page) {
@@ -8,21 +8,14 @@ export class GigabytePage {
   }
 
   /**
-   * 導航到首頁
-   */
-  async goto() {
-    await this.page.goto('/');
-  }
-
-  /**
-   * 點擊搜尋按鈕
+   * @description 點擊搜尋按鈕
    */
   async clickSearchButton() {
     await this.page.getByRole('img').nth(4).click();
   }
 
   /**
-   * 在搜尋框輸入關鍵字
+   * @description 在搜尋框輸入關鍵字
    */
   async searchProduct(keyword: string) {
     const searchBox = this.page.getByRole('textbox', { name: 'Hit me with your best keyword' });
@@ -32,7 +25,7 @@ export class GigabytePage {
   }
 
   /**
-   * 點擊搜尋結果中的產品
+   * @description 點擊搜尋結果中的產品
    */
   async clickProductResult(productName: string) {
     const productPromise = this.page.waitForEvent('popup');
