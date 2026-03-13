@@ -1,4 +1,5 @@
 import { Page } from '@playwright/test';
+import { URLS, type CountryCode } from '@fixtures/urls';
 
 export class Index {
   readonly page: Page;
@@ -10,7 +11,7 @@ export class Index {
   /**
    * @description 導航到首頁
    */
-  async gotoHomepage() {
-    await this.page.goto('/');
+  async gotoHomepage(country?: CountryCode) {
+    await this.page.goto(URLS.homePath(country));
   }
 }

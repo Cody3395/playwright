@@ -1,7 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { Header } from '@pages/layout';
 import { Index } from '@pages/index';
-import { URLS } from '@fixtures/urls';
 
 /**
  * @description Smoke Tests - 快速驗證關鍵功能
@@ -16,14 +15,14 @@ test.describe('Gigabyte Homepage - Smoke Tests', () => {
   });
 
   test('should load homepage and verify title', async ({ page }) => {
-    await page.goto(URLS.HOME);
+    await homepage.gotoHomepage();
 
     // Expect a title "to contain" a substring.
     await expect(page).toHaveTitle(/GIGABYTE/);
   });
  
   test('should load page successfully with content', async ({ page }) => {
-    await page.goto(URLS.HOME);
+    await homepage.gotoHomepage();
 
     // Verify page loaded by checking for common elements
     const pageTitle = await page.title();
